@@ -18,7 +18,6 @@ public class UserController {
 	
 	@GetMapping("/users")
 	public List<User> listAllUsers() {
-		System.out.println("hola");
 		return repository.findAll();
 	}
 }
