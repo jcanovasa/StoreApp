@@ -1,5 +1,8 @@
 package com.javaschool.project.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -20,11 +23,12 @@ public class User {
 	
 	@Column(name = "email", length = 60, nullable = false)
 	private String email;
-	
+
 	@Column(name = "data_birth", length = 60, nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date birth;
-	
-	@Column(name = "password", length = 60, nullable = false)
+
+	@Column(name = "password", length = 60)
 	private String pwd;
 	
 	public User() {
