@@ -13,6 +13,7 @@ import com.javaschool.project.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/users/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
@@ -30,8 +31,7 @@ public class UserController {
 		return repository.save(user);
 	}
 
-
-
+	//Con este selecciono un usuario en concreto
 	@GetMapping("/users/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable Long id) {
 		User user = repository.findById(id)
@@ -39,7 +39,7 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 
-	@PutMapping("/users/{id}")
+	@PutMapping("/users/users/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
 		User user = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(("User with id " + id + " does not found")));
