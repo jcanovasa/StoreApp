@@ -15,6 +15,4 @@ public class ApiConfig implements WebMvcConfigurer {
         WebMvcConfigurer.super.addCorsMappings(registry);
         registry.addMapping( "/**");
     }
-
-
 }

@@ -2,7 +2,8 @@ package com.javaschool.project.controllers;
 
 import java.util.List;
 
-import org.apache.coyote.Response;
+//import com.javaschool.project.exceptions.ResourceNotFoundException;
+import com.javaschool.project.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,4 +31,24 @@ public class UserController {
 	}
 
 
+
+	@GetMapping("/users/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable Long id) {
+		User user = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found)"));
+		return ResponseEntity.ok(user);
 	}
+
+	@PutMapping("/users/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+		User user = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(("User with id " + id + " does not found")));
+		user.setName(userDetails.getName());
+		user.setSurname(userDetails.getSurname());
+		user.setEmail(userDetails.getEmail());
+		user.setBirth(userDetails.getBirth());
+
+		User updatedUser = repository.save(user);
+		return ResponseEntity.ok(user);
+	}
+}

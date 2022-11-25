@@ -12,20 +12,20 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "category", length = 60, nullable = false)
-	private String category;
-	
-	@OneToMany(mappedBy="category", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<Product> products;
+	@Column(name = "name", length = 60, nullable = false)
+	private String name;
+
+	//@OneToMany(mappedBy="category", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	//private List<Product> products;
 
 	public Category() {
 		
 	}
 	
-	public Category(Long id, String category) {
+	public Category(Long id, String name) {
 		super();
 		this.id = id;
-		this.category = category;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -36,12 +36,12 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -16,31 +16,34 @@ public class Product {
 	@Column(name = "price", nullable = false)
 	private float price;
 	
-	@Column(name = "brand", length = 60, nullable = false)
+	@Column(name = "brand", length = 60)
 	private String brand;
 	
-	@Column(name = "color", length = 60, nullable = false)
+	@Column(name = "color", length = 60)
 	private String color;
 	
-	@Column(name = "weight", nullable = false)
+	@Column(name = "weight")
 	private String weight;
 	
-	@Column(name = "volume", length = 60, nullable = false)
+	@Column(name = "volume", length = 60)
 	private String volume;
 	
 	@ManyToOne
-	@JoinColumn(name = "category", nullable = false) 
+	@JoinColumn(name = "category_id")
 	private Category category;
 	
-	@Column(name = "stock", nullable = false)
+	@Column(name = "stock")
 	private int stock;
+
+	@Column(name = "image")
+	private String imgURL;
 
 	public Product() {
 		
 	}
 	
 	public Product(Long id, String nameItem, float price, String brand, String color, String weight, String volume,
-			Category category, int stock) {
+			Category category, int stock, String imgURL) {
 		super();
 		this.id = id;
 		this.nameItem = nameItem;
@@ -51,6 +54,7 @@ public class Product {
 		this.volume = volume;
 		this.category = category;
 		this.stock = stock;
+		this.imgURL = imgURL;
 	}
 
 	public Long getId() {
@@ -123,6 +127,14 @@ public class Product {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public String getImage() {
+		return imgURL;
+	}
+
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
 	}
 
 }
