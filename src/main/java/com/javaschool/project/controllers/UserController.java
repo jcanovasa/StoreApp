@@ -59,7 +59,7 @@ public class UserController {
 		System.out.println("hola3-------------------------------------------------------------------");
 		repository.deleteById(id);
 		JSONObject respuesta = new JSONObject();
-		respuesta.put("msg", ":)");
+		respuesta.put("msg", "The user will be deleted.");
 		System.out.println(respuesta.get("msg"));
 		return new ResponseEntity<JSONObject>(respuesta, HttpStatus.OK);
 	}
