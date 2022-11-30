@@ -56,7 +56,6 @@ public class UserController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<JSONObject> deleteUser(@PathVariable Long id) {
-		System.out.println("hola3-------------------------------------------------------------------");
 		repository.deleteById(id);
 		JSONObject respuesta = new JSONObject();
 		respuesta.put("msg", "The user will be deleted.");
