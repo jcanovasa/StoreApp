@@ -22,10 +22,10 @@ public class Product {
 	@Column(name = "color", length = 60)
 	private String color;
 	
-	@Column(name = "weight")
+	@Column(name = "weight", length=5)
 	private String weight;
 	
-	@Column(name = "volume", length = 60)
+	@Column(name = "volume", length = 5)
 	private String volume;
 	
 	@ManyToOne
@@ -129,7 +129,7 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public String getImage() {
+	public String getImgURL() {
 		return imgURL;
 	}
 

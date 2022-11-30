@@ -30,12 +30,15 @@ public class User {
 
 	@Column(name = "password", length = 60)
 	private String pwd;
+
+	@Column(name = "rol")
+	private String rol;
 	
 	public User() {
 		
 	}
 
-	public User(Long id, String name, String surname, String email, Date birth, String pwd) {
+	public User(Long id, String name, String surname, String email, Date birth, String pwd, String rol) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,6 +46,7 @@ public class User {
 		this.email = email;
 		this.birth = birth;
 		this.pwd = pwd;
+		this.rol = rol;
 	}
 
 	public Long getId() {
@@ -55,6 +59,14 @@ public class User {
 
 	public String getName() {
 		return name;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
+	public String getRol() {
+		return rol;
 	}
 
 	public void setName(String name) {

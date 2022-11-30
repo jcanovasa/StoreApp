@@ -45,7 +45,7 @@ public class ProductController {
 		product.setCategory(productDetails.getCategory());
 		product.setColor(productDetails.getColor());
 		product.setId(productDetails.getId());
-		product.setImgURL(productDetails.getImage());
+		product.setImgURL(productDetails.getImgURL());
 		product.setVolume(productDetails.getVolume());
 		product.setStock(productDetails.getStock());
 		product.setWeight(productDetails.getWeight());
