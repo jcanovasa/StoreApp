@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.javaschool.project.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import net.minidev.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +13,7 @@ import com.javaschool.project.exceptions.ResourceNotFoundException;
 import com.javaschool.project.models.Product;
 import com.javaschool.project.repository.ProductRepository;
 @RestController
-@RequestMapping("/api/products/")
+@RequestMapping("/api/products")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 	
@@ -49,8 +51,18 @@ public class ProductController {
 		product.setVolume(productDetails.getVolume());
 		product.setStock(productDetails.getStock());
 		product.setWeight(productDetails.getWeight());
+		product.setDescription(productDetails.getDescription());
 
 		Product updatedProduct = repository.save(product);
 		return ResponseEntity.ok(updatedProduct);
+	}
+
+	@DeleteMapping("/products/{id}")
+	public ResponseEntity<JSONObject> deleteProduct(@PathVariable Long id) {
+		repository.deleteById(id);
+		JSONObject response = new JSONObject();
+		response.put("msg", "The product will be deleted.");
+		System.out.println(response.get("msg"));
+		return new ResponseEntity<JSONObject>(response, HttpStatus.OK);
 	}
 }

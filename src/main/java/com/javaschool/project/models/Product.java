@@ -38,12 +38,15 @@ public class Product {
 	@Column(name = "image")
 	private String imgURL;
 
+	@Column(name = "description")
+	private String description;
+
 	public Product() {
 		
 	}
 	
 	public Product(Long id, String nameItem, float price, String brand, String color, String weight, String volume,
-			Category category, int stock, String imgURL) {
+			Category category, int stock, String imgURL, String description) {
 		super();
 		this.id = id;
 		this.nameItem = nameItem;
@@ -55,6 +58,7 @@ public class Product {
 		this.category = category;
 		this.stock = stock;
 		this.imgURL = imgURL;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -135,6 +139,14 @@ public class Product {
 
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
