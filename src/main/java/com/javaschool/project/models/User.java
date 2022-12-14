@@ -3,6 +3,7 @@ package com.javaschool.project.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -33,6 +34,11 @@ public class User {
 
 	@Column(name = "rol")
 	private String rol;
+
+	/*
+	@OneToOne
+	private Order order;
+	*/
 	
 	public User() {
 		
