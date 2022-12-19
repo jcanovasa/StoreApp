@@ -35,17 +35,17 @@ public class User {
 	@Column(name = "rol")
 	private String rol;
 
-	/*
-	@OneToOne
+	//Aquí la anotación JoinColumn, el 'name' se utiliza para especificar el nombre
+	//de la columna en la tabla de usuarios que almacenará la clave foránea que se refiere a la clave
+	//primaria de tabla de cesta
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private Order order;
-	*/
-	
-	public User() {
-		
-	}
 
-	public User(Long id, String name, String surname, String email, Date birth, String pwd, String rol) {
-		super();
+
+	public User(){}
+
+	public User(Long id, String name, String surname, String email, Date birth, String pwd, String rol, Order order) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -53,6 +53,16 @@ public class User {
 		this.birth = birth;
 		this.pwd = pwd;
 		this.rol = rol;
+		this.order = order;
+	}
+
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	public Long getId() {

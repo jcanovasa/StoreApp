@@ -1,6 +1,7 @@
 package com.javaschool.project.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Products")
@@ -41,15 +42,16 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 
+	/* La anotación @ManyToMany se utiliza para establecer la relación de muchos a muchos con la clase de cestas.
+	La anotación mappedBy se utiliza para indicar que la relación de muchos a muchos se establece desde la clase
+	Order
+	*/
+	@ManyToMany(mappedBy = "products")
+	private List<Order> orders;
 
+	 public Product(){}
 
-	public Product() {
-		
-	}
-	
-	public Product(Long id, String nameItem, float price, String brand, String color, String weight, String volume,
-			Category category, int stock, String imgURL, String description) {
-		super();
+	 public Product(Long id, String nameItem, float price, String brand, String color, String weight, String volume, Category category, int stock, String imgURL, String description, List<Order> orders) {
 		this.id = id;
 		this.nameItem = nameItem;
 		this.price = price;
@@ -61,6 +63,15 @@ public class Product {
 		this.stock = stock;
 		this.imgURL = imgURL;
 		this.description = description;
+		this.orders = orders;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	public Long getId() {
