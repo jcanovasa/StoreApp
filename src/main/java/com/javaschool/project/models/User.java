@@ -1,17 +1,15 @@
 package com.javaschool.project.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.*;
 
+//Le indico a Java que las instancias que voy a crear, se registrarán en una base de datos en la tabla "users"
 @Entity
 @Table(name = "Users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,13 +17,13 @@ public class User {
 	@Column(name = "name", length = 60, nullable = false)
 	private String name;
 	
-	@Column(name = "surname", length = 60, nullable = false)
+	@Column(name = "surname", length = 60)
 	private String surname;
 	
 	@Column(name = "email", length = 60, nullable = false)
 	private String email;
 
-	@Column(name = "data_birth", length = 60, nullable = false)
+	@Column(name = "data_birth", length = 60)
 	@Temporal(TemporalType.DATE)
 	private Date birth;
 
@@ -42,7 +40,6 @@ public class User {
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private Order order;
 
-
 	public User(){}
 
 	public User(Long id, String name, String surname, String email, Date birth, String pwd, String rol, Order order) {
@@ -55,7 +52,6 @@ public class User {
 		this.rol = rol;
 		this.order = order;
 	}
-
 
 	public Order getOrder() {
 		return order;
@@ -120,7 +116,4 @@ public class User {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
-	
-
 }

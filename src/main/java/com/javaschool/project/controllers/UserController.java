@@ -2,7 +2,6 @@ package com.javaschool.project.controllers;
 
 import java.util.List;
 
-//import com.javaschool.project.exceptions.ResourceNotFoundException;
 import com.javaschool.project.exceptions.ResourceNotFoundException;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import com.javaschool.project.models.User;
 import com.javaschool.project.repository.UserRepository;
 
+//La primera anotación me sirve para decirle a Spring que esta clase es un controlador de REST, es decir, que
+//va a manejar solicitudes HTTP devolviendo las respuestas como JSON o XML. La segunda anotación sirve para
+//asociar la URL de /api/users de forma que todas las solicitudes que se envíen a dicha ruta serán manejadas
+//por los métodos de éste controlador. La última anotación es para habilitar el acceso del CORS en un controlador
+//de l REST.
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
-	
+
+	//Esta anotación sirve para inyectar una instancia del UserRepository en la clase UserController.
+	//No es obligatoria, ya que existen alternativas como por ejemplo inyectar las dependencias explícitamente
+	//en el constructor o en un setter.
 	@Autowired
 	private UserRepository repository;
 
@@ -62,6 +69,4 @@ public class UserController {
 		System.out.println(response.get("msg"));
 		return new ResponseEntity<JSONObject>(response, HttpStatus.OK);
 	}
-
-	//@PostMapping("/{id}")
 }
